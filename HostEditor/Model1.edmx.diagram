@@ -7,7 +7,6 @@
       <Diagram DiagramId="37b6748181c849b3a1f098568156287e" Name="Diagram1">
         <EntityTypeShape EntityType="HostEditorModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="HostEditorModel.Host" Width="1.5" PointX="3" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HostEditorModel.sysdiagrams" Width="1.5" PointX="0.875" PointY="3.75" IsExpanded="true" />
         <AssociationConnector Association="HostEditorModel.FK_Host_Category" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

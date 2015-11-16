@@ -27,6 +27,5 @@ namespace HostEditor
     
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Host> Host { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

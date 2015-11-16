@@ -23,6 +23,7 @@ namespace HostEditor
 
         private void Form1_Load(object sender, EventArgs e)
         {            
+            //test
             SqlDataAdapter da = new SqlDataAdapter();
             SqlCommand cmd = new SqlCommand();
             DataSet ds = new DataSet();
