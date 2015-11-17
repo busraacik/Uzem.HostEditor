@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostEditor", "HostEditor\HostEditor.csproj", "{E6A3FCA2-EF47-44CA-B30D-6E2FADC1C65F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostEditor.Site", "C:\Users\teknosa\Documents\Visual Studio 2015\Projects\HostEditor\HostEditor.Site\HostEditor.Site.csproj", "{F4407E4A-CA1D-4B1A-8D5C-1043C7357F63}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostEditor.Site", "HostEditor.Site\HostEditor.Site.csproj", "{F4407E4A-CA1D-4B1A-8D5C-1043C7357F63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
