@@ -43,6 +43,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataAnnotationsExtensions, Version=1.1.0.0, Culture=neutral, PublicKeyToken=358a5681c50fd84c, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataAnnotationsExtensions.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions.ClientValidation, Version=1.1.0.0, Culture=neutral, PublicKeyToken=358a5681c50fd84c, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataAnnotationsExtensions.MVC3.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -74,6 +82,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.2.0.0\lib\NETFramework40\WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -100,17 +112,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Models\HostEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HostEntities.edmx</DependentUpon>
-      <LastGenOutput>HostEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\HostEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HostEntities.edmx</DependentUpon>
-      <LastGenOutput>HostEntities.cs</LastGenOutput>
+    <EntityDeploy Include="Models\HostEditorEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HostEditorEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HostEditorEntities.edmx.diagram">
+      <DependentUpon>HostEditorEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Models\HostEditorEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HostEditorEntities.edmx</DependentUpon>
+      <LastGenOutput>HostEditorEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HostEditorEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HostEditorEntities.edmx</DependentUpon>
+      <LastGenOutput>HostEditorEntities.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\IpValidation.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -121,32 +141,38 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\IpValidation.cs" />
+    <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs">
-      <DependentUpon>HostEntities.tt</DependentUpon>
+      <DependentUpon>HostEditorEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Host.cs">
-      <DependentUpon>HostEntities.tt</DependentUpon>
+      <DependentUpon>HostEditorEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HostEntities.Context.cs">
+    <Compile Include="Models\HostEditorEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HostEntities.Context.tt</DependentUpon>
+      <DependentUpon>HostEditorEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HostEntities.cs">
+    <Compile Include="Models\HostEditorEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HostEntities.tt</DependentUpon>
+      <DependentUpon>HostEditorEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HostEntities.Designer.cs">
+    <Compile Include="Models\HostEditorEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HostEntities.edmx</DependentUpon>
+      <DependentUpon>HostEditorEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>HostEditorEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -156,19 +182,19 @@
     <Content Include="Views\Home\indextest.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\index.cshtml" />
-    <EntityDeploy Include="Models\HostEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HostEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\HostEntities.edmx.diagram">
-      <DependentUpon>HostEntities.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\Host\Create.cshtml" />
     <Content Include="Views\Host\Delete.cshtml" />
     <Content Include="Views\Host\Details.cshtml" />
     <Content Include="Views\Host\Edit.cshtml" />
     <Content Include="Views\Host\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutScripts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

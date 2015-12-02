@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="breadcrumbs" id="breadcrumbs">
     <script type="text/javascript">
 							try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}
@@ -17,9 +18,9 @@
         </li>
 
         <li>
-            <a href="#">HostEditor</a>
+            <a href="#">Hosts</a>
         </li>
-        <li class="active">Add Host</li>
+        <li class="active">Index</li>
     </ul>
 
     <div class="nav-search" id="nav-search">
@@ -32,6 +33,46 @@
 
     </div>
 </div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+<div class="widget-box">
+    <div class="widget-header widget-header-small">
+        <h5 class="widget-title lighter">Search Hosts</h5>
+    </div>
+    
+    <div class="widget-body">
+        <div class="widget-main">
+            
+                <div class="row">
+                    <div class="col-xs-12 col-sm-8">
+                        
+                           
+                            <div class="form-group">
+                                
+                                @Html.DropDownList("searchKeyword", (SelectList)ViewBag.searchKeyword, new  { @id= "searchKeyword" });
+                                
+                                <input type="submit" value="search" />
+                                @*<span class="input-group-btn">
+                                    <button type="button" class="btn btn-purple btn-sm" onclick="formSearch">
+                                        <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+                                        Search
+                                    </button>
+                                </span>*@
+                            </div>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+</div>
+}								
+
+
+
+
+
 <div class="alert alert-info" role="alert" style="margin-left:5px; margin-right:5px">
     <span class="alert-link">
         @Html.ActionLink("Create New Host", "Create")

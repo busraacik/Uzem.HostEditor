@@ -13,10 +13,10 @@ namespace HostEditor.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HostEditorEntities : DbContext
+    public partial class HostEditorEntities1 : DbContext
     {
-        public HostEditorEntities()
-            : base("name=HostEditorEntities")
+        public HostEditorEntities1()
+            : base("name=HostEditorEntities1")
         {
         }
     
@@ -27,5 +27,6 @@ namespace HostEditor.Models
     
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Host> Host { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

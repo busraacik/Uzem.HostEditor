@@ -11,15 +11,48 @@ namespace HostEditor.Models
 {
     using System;
     using System.Collections.Generic;
-    
-    public partial class Host
+    using System.ComponentModel.DataAnnotations;
+    using System.Text.RegularExpressions;
+    using HostEditor.App_Start;
+
+    public partial class Host //: IValidatableObject
     {
         public int HostId { get; set; }
         public string HostName { get; set; }
+
+        [Required]
+        //[RegularExpression(@"^([\d]{1,3}\.){3}[\d]{1,3}$", ErrorMessage = "Not valid CIDR format")]
+        [IpValidation]
+        //[CIDRSubnet(ErrorMessage = "Not a valid CIDR Subnet")]
         public string IP { get; set; }
+
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    const string regexPattern = @"^([\d]{1,3}\.){3}[\d]{1,3}$";
+        //    var regex = new Regex(regexPattern);
+
+        //    if (!regex.IsMatch(IP))
+        //        yield return new ValidationResult("IP address format is invalid", new[] { "IP" });
+
+        //    string[] values = IP.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+
+        //    byte ipByteValue;
+
+        //    foreach (string token in values)
+        //    {
+        //        if (!byte.TryParse(token, out ipByteValue))
+        //            yield return new ValidationResult("IP address value is incorrect", new[] { "IP" });
+        //    }
+        //}
+
         public string Description { get; set; }
         public int CategoryId { get; set; }
     
         public virtual Category Category { get; set; }
+
+        //private class CIDRSubnetAttribute : Attribute
+        //{
+        //    public string ErrorMessage { get; set; }
+        //}
     }
 }
