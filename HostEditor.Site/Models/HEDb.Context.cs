@@ -13,10 +13,10 @@ namespace HostEditor.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HostEditorEntities1 : DbContext
+    public partial class HEDb : DbContext
     {
-        public HostEditorEntities1()
-            : base("name=HostEditorEntities1")
+        public HEDb()
+            : base("name=HEDb")
         {
         }
     
@@ -25,8 +25,7 @@ namespace HostEditor.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Host> Host { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
     }
 }

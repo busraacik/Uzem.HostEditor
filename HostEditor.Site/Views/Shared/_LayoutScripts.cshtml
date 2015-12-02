@@ -1,1 +1,39 @@
-﻿
+﻿<!--[if !IE]>
+	<script type="text/javascript">
+		window.jQuery || document.write("<script src='@CdnHelper.AceJs("jquery.js")'>" + "<" + "/script>");
+	</script>
+<!-- <![endif]-->
+<!--[if IE]>
+	<script type="text/javascript">
+		window.jQuery || document.write("<script src='@CdnHelper.AceJs("jquery1x.js")'>"+"<"+"/script>");
+	</script>
+<![endif]-->
+<script src="@CdnHelper.AceJs("jquery.js")"></script>
+<script type="text/javascript">
+	if ('ontouchstart' in document.documentElement) document.write("<script src='@CdnHelper.AceJs("query.mobile.custom.js")'>" + "<" + "/script>");
+</script>
+<script src="@CdnHelper.AceJs("bootstrap.js")"></script>
+<!-- page specific plugin scripts -->
+<!--[if lte IE 8]>
+		  <script src="@CdnHelper.AceJs("excanvas.min.js")"></script>
+<![endif]-->
+<script src="@CdnHelper.AceJs("jquery-ui.custom.js")"></script>
+<script src="@CdnHelper.AceJs("jquery.ui.touch-punch.js")"></script>
+<script src="@CdnHelper.AceJs("jquery.easypiechart.js")"></script>
+<script src="@CdnHelper.AceJs("jquery.sparkline.js")"></script>
+<script src="@CdnHelper.AceJs("flot/jquery.flot.js")"></script>
+<script src="@CdnHelper.AceJs("flot/jquery.flot.pie.js")"></script>
+<script src="@CdnHelper.AceJs("flot/jquery.flot.resize.js")"></script>
+
+<!-- ace scripts -->
+<script src="@CdnHelper.AceJs("ace-elements.js")"></script>
+<script src="@CdnHelper.AceJs("ace.js")"></script>
+<script src="@CdnHelper.AceJs("bootbox.js")"></script>
+<script type="text/javascript"> ace.vars['base'] = '..'; </script>
+
+<script src="@CdnHelper.AceJs("jquery.gritter.js")"></script>
+<script src="@CdnHelper.CdnContent("/Content/base/js/popbox.js")"></script>
+ 
+
+
+

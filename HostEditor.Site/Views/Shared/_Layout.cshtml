@@ -1,183 +1,52 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
-
 <!DOCTYPE html>
-
 <html>
 <head>
-
-    <title>Home Page</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta charset="utf-8" />
-
     <meta name="description" content="overview &amp; stats" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-    <link rel="stylesheet" href="http://cdn.lms.sabis.sakarya.edu.tr/Content/ace/v1.3.3/assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="http://cdn.lms.sabis.sakarya.edu.tr/Content/ace/v1.3.3/assets/css/font-awesome.css" />
-    <link rel="stylesheet" href="http://cdn.lms.sabis.sakarya.edu.tr/Content/ace/v1.3.3/assets/css/ace-fonts.css" />
-    <link rel="stylesheet" href="http://cdn.lms.sabis.sakarya.edu.tr/Content/ace/v1.3.3/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
-    <link rel="stylesheet" href="http://cdn.lms.sabis.sakarya.edu.tr/Content/ace/v1.3.3/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style">
-    <script src="http://cdn.lms.sabis.sakarya.edu.tr/Content/ace/v1.3.3/assets/js/ace-extra.js"></script>
-    <script src="~/Scripts/IpValidation.js"></script>
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title - Host Editor</title>
+    @Html.Partial("_LayoutHead")
+    @RenderSection("Head", required: false)
 </head>
 <body class="no-skin">
-    <div id="navbar" class="navbar navbar-default">
-        <script type="text/javascript">
-            try { ace.settings.check('navbar', 'fixed') } catch (e) { }
-        </script>
-
-        <div class="navbar-container" id="navbar-container">
-
-            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
-                <span class="sr-only">Toggle sidebar</span>
-
-                <span class="icon-bar"></span>
-
-                <span class="icon-bar"></span>
-
-                <span class="icon-bar"></span>
-            </button>
-            <style>
-                .brandElement {
-                    background-image: url(/Files/image/header-logo.png) !important;
-                    background-repeat: no-repeat !important;
-                    height: 37px !important;
-                    width: 200px !important;
-                    margin-left: -10px !important;
-                    margin-top: 4px !important;
-                    padding: 0px !important;
-                }
-            </style>
-
-
-            <div class="navbar-header pull-left">
-
-
-                <a href="/" class="brand brandElement">
-
-
-                    Sau
-                </a>
-
-            </div>
-           
-
-
-        </div>
-        <!-- /.navbar-container -->
-    </div>
-
+    @Html.Partial("_LayoutNavbar")
     <div class="main-container" id="main-container">
-        <script type="text/javascript">
-            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
-        </script>
-
-        <!------------------------------ #section:basics/sidebar ------------------------------------------>
-        <div id="sidebar" class="sidebar                  responsive">
-            <script type="text/javascript">
-                try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
-            </script>
-
-            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
-                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-                    <button class="btn btn-success">
-                        <i class="ace-icon fa fa-signal"></i>
-                    </button>
-
-                    <button class="btn btn-info">
-                        <i class="ace-icon fa fa-pencil"></i>
-                    </button>
-
-                    <!-- #section:basics/sidebar.layout.shortcuts -->
-                    <button class="btn btn-warning">
-                        <i class="ace-icon fa fa-users"></i>
-                    </button>
-
-                    <button class="btn btn-danger">
-                        <i class="ace-icon fa fa-cogs"></i>
-                    </button>
-
-                    <!-- /section:basics/sidebar.layout.shortcuts -->
-                </div>
-
-
-            </div>
-
-            <ul class="nav nav-list">
-                <li class="active">
-                    <a href="index.html">
-                        <i class="menu-icon fa fa-tachometer"></i>
-                        <span class="menu-text"> Dashboard </span>
-                    </a>
-
-                    <b class="arrow"></b>
-                </li>
-
-                
-                <li class="open">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="menu-icon fa fa-pencil-square-o"></i>
-                        <span class="menu-text"> Host Editor </span>
-
-                        <b class="arrow fa fa-angle-down"></b>
-                    </a>
-
-                    <b class="arrow"></b>
-
-                    <ul class="submenu">
-                        <li class="">
-                           
-                             @Html.ActionLink("Hosts", "Index", "Host")  
-                           @* <i class="menu-icon fa fa-caret-right"></i>*@
-                            
-                            <b class="arrow"></b>
-                        </li>
-
-                        <li class="">
-                            
-                                @Html.ActionLink("Categories", "Index", "Categories")
-                               @* <i class="menu-icon fa fa-caret-right"></i>*@
-                                
-                            
-
-                            <b class="arrow"></b>
-                        </li>
-                    </ul>
-                </li>
-
-
-            </ul><!-- /.nav-list -->
-            <!-- #section:basics/sidebar.layout.minimize -->
-            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
-                <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
-            </div>
-
-            <!-- /section:basics/sidebar.layout.minimize -->
-            <script type="text/javascript">
-                try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
-            </script>
-        </div>
-
-        <!-- -------------------------------/section:basics/sidebar----------------------------------------------- -->
-
-
-
+        @Html.Partial("_LayoutSidebar")
         <div class="main-content">
             <div class="main-content-inner">
-                @RenderBody()
+                <div class="breadcrumbs" id="breadcrumbs">
+                    <script type="text/javascript">
+                        try { ace.settings.check('breadcrumbs', 'fixed') } catch (e) { }
+                    </script>
+
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="@Url.Action("Index","Home")">Anasayfa</a>
+                        </li>
+                        @RenderSection("Navigation", required: false)
+                    </ul>
+                    <div class="nav-search" id="nav-search">
+                        @*<form class="form-search">
+                            <span class="input-icon"> 
+                                <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                                <i class="ace-icon fa fa-search nav-search-icon"></i>
+                            </span>
+                        </form>*@
+                    </div>
+                </div>
+                <div class="page-content">
+                    @RenderBody()
+                </div>
             </div>
         </div>
-
-
-
-
-
-
     </div>
-
+    @Html.Partial("_LayoutScripts")
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

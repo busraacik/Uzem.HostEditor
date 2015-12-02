@@ -1,0 +1,50 @@
+﻿@using Whe.Web.Mvc
+@model HostEditor.Models.Category
+@{
+    ViewBag.Title = "Yeni Kategori";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="page-header">
+        <h1>
+            <i class="fa fa-sitemap "></i> @ViewBag.Title
+
+            <button tabindex="5" class="btn btn-white btn-bold btn-success pull-right" id="btnCreate" type="submit" style="margin-left:5px;">
+                <i class="ace-icon fa fa-plus bigger-110"></i>
+                Oluştur
+            </button>
+
+            <a class="btn btn-white btn-warning pull-right" href="@Url.Action("Index", "Category")">
+                <i class="ace-icon fa fa-level-down bigger-110"></i>
+                İptal
+            </a>
+        </h1>
+    </div>
+
+    <div>
+
+        <div class="form-horizontal">
+            @Html.WAlertError()
+            <div class="space-6"></div>
+            @Html.WTextBoxFor(m => m.Name, "Kategori")
+            <div class="space-6"></div>
+            @*@Html.WDropDownListFor(m => m.Week, (IEnumerable<SelectListItem>)ViewBag.Weeks, "Hafta Seçin")
+                <div class="space-6"></div>
+                @Html.WTextBoxFor(m => m.Name, Model.Name)
+                <div class="space-6"></div>
+                @Html.WTextBoxFor(m => m.StartDate, "", htmlAttributes: new { @class = "datetime-picker" })
+                <div class="space-6"></div>
+                @Html.WTextBoxFor(m => m.Duration, "Örn : 30")
+
+                <div class="space-6"></div>
+                @Html.WCheckboxFor(m => m.Publish, false, true, CheckBoxStyle.Large)*@
+        </div>
+
+    </div>
+}
+
+
+
+
+

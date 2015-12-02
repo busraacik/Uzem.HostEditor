@@ -12,23 +12,14 @@ namespace HostEditor.Controllers
 {
     public class HostController : Controller
     {
-        private HostEditorEntities1 db = new HostEditorEntities1();
+        private HEDb Db = new HEDb();
 
         // GET: Host
         [HttpGet]       
-        public ActionResult Index()
+        public ActionResult Index(string Search)
         {
-            List<string>searchKeyword = new List<string>();
-            searchKeyword.Add("Please choose category which they want");
-            searchKeyword.Add("HostName");
-            searchKeyword.Add("IP");
-            searchKeyword.Add("Description");
-            searchKeyword.Add("Name");
-
-            ViewBag.searchKeyword = new SelectList(searchKeyword);
-                
-            var host = db.Host.Include(h => h.Category);
-            
+            ViewBag.Search = new SelectList(Search);     
+            var host = Db.Host.Include(h => h.Category);    
             return View(host.ToList());
             
             
@@ -49,7 +40,7 @@ namespace HostEditor.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Host host = db.Host.Find(id);
+            Host host = Db.Host.Find(id);
             if (host == null)
             {
                 return HttpNotFound();
@@ -60,7 +51,7 @@ namespace HostEditor.Controllers
         // GET: Host/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "Name");
+            ViewBag.CategoryId = new SelectList(Db.Category, "CategoryId", "Name");
             return View();
         }
 
@@ -73,12 +64,12 @@ namespace HostEditor.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "Name", host.CategoryId);
+                ViewBag.CategoryId = new SelectList(Db.Category, "CategoryId", "Name", host.CategoryId);
                 return View(host);
                
             }
-                db.Host.Add(host);
-                db.SaveChanges();
+                Db.Host.Add(host);
+                Db.SaveChanges();
                 
                 return RedirectToAction("Index");
         }
@@ -91,12 +82,12 @@ namespace HostEditor.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Host host = db.Host.Find(id);
+            Host host = Db.Host.Find(id);
             if (host == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "Name", host.CategoryId);
+            ViewBag.CategoryId = new SelectList(Db.Category, "CategoryId", "Name", host.CategoryId);
             return View(host);
         }
 
@@ -109,11 +100,11 @@ namespace HostEditor.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(host).State = EntityState.Modified;
-                db.SaveChanges();
+                Db.Entry(host).State = EntityState.Modified;
+                Db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Category, "CategoryId", "Name", host.CategoryId);
+            ViewBag.CategoryId = new SelectList(Db.Category, "CategoryId", "Name", host.CategoryId);
             return View(host);
         }
 
@@ -124,7 +115,7 @@ namespace HostEditor.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Host host = db.Host.Find(id);
+            Host host = Db.Host.Find(id);
             if (host == null)
             {
                 return HttpNotFound();
@@ -137,9 +128,9 @@ namespace HostEditor.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Host host = db.Host.Find(id);
-            db.Host.Remove(host);
-            db.SaveChanges();
+            Host host = Db.Host.Find(id);
+            Db.Host.Remove(host);
+            Db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -147,7 +138,7 @@ namespace HostEditor.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                Db.Dispose();
             }
             base.Dispose(disposing);
         }

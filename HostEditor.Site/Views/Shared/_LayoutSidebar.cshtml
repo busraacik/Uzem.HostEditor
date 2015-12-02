@@ -1,0 +1,32 @@
+﻿<script type="text/javascript">
+    try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+</script>
+<!------------------------------ #section:basics/sidebar ------------------------------------------>
+<div id="sidebar" class="sidebar                  responsive">
+    <script type="text/javascript">
+        try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
+    </script>
+    <ul class="nav nav-list">
+        <li class="open">
+            <a href="@Url.Action("Index","Host")"  >
+                <i class="menu-icon fa fa-globe"></i>
+                <span class="menu-text"> Adresler </span> 
+            </a>
+        </li>
+        <li class="open">
+            <a href="@Url.Action("Index","Category")"  >
+                <i class="menu-icon fa fa-folder"></i>
+                <span class="menu-text"> Kategoriler </span>
+            </a>
+        </li>
+    </ul>
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    </div>
+
+
+    <script type="text/javascript">
+        try { ace.settings.check('sidebar', 'collapsed') } catch (e) { }
+    </script>
+</div>
+
